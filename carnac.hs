@@ -9,16 +9,13 @@ cn n
 
 
 calc :: String -> Int
-calc s = calcWords (words s)
+calc s = calcWords ((words s))
 
 calcWords :: [String] -> Int
 calcWords [] = 0
-calcWords [s] = (read s :: Int)
---calcWords (lhs:"+":rhs:rest) = (read lhs :: Int) + (read rhs :: Int) + (calcWords rest)
---calcWords (lhs:"-":rhs:rest) = (read lhs :: Int) - (read rhs :: Int) + (calcWords rest)
-calcWords (lhs:op:rhs:rest)
-          | op == "+" = (read lhs :: Int) + (read rhs :: Int) + (calcWords rest)
-          | op == "-" = (read lhs :: Int) - (read rhs :: Int) + (calcWords rest)
+calcWords ("+":num:rest)  = (read num :: Int) + calcWords rest
+calcWords ("-":num:rest)  = (- (read num :: Int)) + calcWords rest
+calcWords (num:rest) = (read num :: Int) + (calcWords rest)
 
 
 carnac n = [ x ++ " == " ++ show (calc x) 
