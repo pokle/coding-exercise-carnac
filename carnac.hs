@@ -1,4 +1,5 @@
 
+-- Generate all combos
 cn :: Int -> [String]
 cn n 
    | n < 2     = ["1"]
@@ -8,16 +9,17 @@ cn n
                  ]
 
 
+-- Simple calculator 
 calc :: String -> Int
 calc s = calcWords ((words s))
 
 calcWords :: [String] -> Int
-calcWords [] = 0
 calcWords ("+":num:rest)  = (read num :: Int) + calcWords rest
 calcWords ("-":num:rest)  = (- (read num :: Int)) + calcWords rest
 calcWords (num:rest) = (read num :: Int) + (calcWords rest)
+calcWords [] = 0
 
-
+-- Filter by (== 100)
 carnac n = [ x ++ " == " ++ show (calc x) 
            | x <- cn n
            , (calc x) == 100 
