@@ -11,13 +11,12 @@ cn n
 
 -- Simple calculator 
 calc :: String -> Int
-calc s = calcWords ((words s))
+calc s = calcWords (reverse (words s))
 
 calcWords :: [String] -> Int
-calcWords ("+":num:rest)  = (read num :: Int) + calcWords rest
-calcWords ("-":num:rest)  = (- (read num :: Int)) + calcWords rest
-calcWords (num:rest) = (read num :: Int) + (calcWords rest)
-calcWords [] = 0
+calcWords (lhs:"+":rest)  = (read lhs :: Int) + calcWords rest
+calcWords (lhs:"-":rest)  = (-(read lhs :: Int)) + calcWords rest
+calcWords (num:[]) = (read num :: Int)
 
 -- Filter by (== 100)
 carnac n = [ x ++ " == " ++ show (calc x) 
