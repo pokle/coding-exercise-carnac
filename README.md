@@ -1,5 +1,7 @@
 # coding-exercise-carnac
-A crazy article got me thinking - http://raganwald.com/2015/05/08/carnac-the-magnificent.html
+A crazy article got me thinking about bad coding tests - http://raganwald.com/2015/05/08/carnac-the-magnificent.html
+
+However, I thought this might be an interesting exercise to apply some of the Haskell I've been learning!
 
 My haskell solution first works out all the possible expressions exhaustively, and then a simple calculator parses and executes the expressions! There's no eval!
 
@@ -16,3 +18,6 @@ My haskell solution first works out all the possible expressions exhaustively, a
     123 + 45 - 67 + 8 - 9 == 100
     123 - 4 - 5 - 6 - 7 + 8 - 9 == 100
     123 - 45 - 67 + 89 == 100
+
+----
+[My other coding exercises](https://github.com/search?q=user%3Apokle+coding-exercise)
